@@ -1,0 +1,38 @@
+<h1>Pizza Guys Order Form</h1>
+<img src="http://www.mysticpizza.com/admin/resources/pizza-pepperoni-w857h456.jpg" width="300px" title="Pizza">
+<form id="pizza_order" method="POST" action="#">
+  <p>Name: </br><input type="text" name="name" required id="name" placeholder="your name"/> </p>
+  <p>Address: #### Street Name ...:</br> <input type="text" name="address" id="email" placeholder="delivery address" /></p>
+  <p>Phone Number: 123-123-1234 </br><input type="tel" pattern="^\d{4}-\d{3}-\d{4}$" name="phone" id="phone"  placeholder="123-123-1234" required /> </p> 
+ Pizza size
+  </br>
+  <input type="radio" name="size" value="large" id="Large" />
+  <label for="large">Large</label>
+  <input type="radio" name="size" value="medium" id="Medium" />
+  <label for="Medium">Medium</label>
+  <input type="radio" name="size" value="Small" />
+  <label for="small">Small</label>
+  </br>
+  Pizza Toppings
+  </br>
+  <input type="checkbox" name="topping" id="Sausage" />
+  <label for="Sausage">Sausage</label>
+  <input type="checkbox" name="topping" id="Pepperoni" />
+  <label for="Pepperoni">Pepperoni</label>
+  <input type="checkbox" name="topping" id="Olives" />
+  <label for="Olives">Olives</label>
+  <input type="checkbox" name="topping" id="Anchovies" />
+  <label for="Anchovies">Anchovies</label>
+  <input type="checkbox" name="topping" id="Onions" />
+  <label for="Onions">Onions</label>
+  </br>
+  <input type="submit" value="Place Order" onclick="return validate(pizza_order)"/>
+  <input type="reset" value="Clear" />
+</form>
+<script>
+function validate(form){
+if(form.name.value!=""&&form.address.value!=""&&form.size.value!="")window.alert("Order Successfully Placed")
+//console.log(form)
+return false
+}
+</script>
