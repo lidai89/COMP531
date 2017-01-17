@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- H5FormValidation.html -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Registration Page</title>
+</head>
+ 
+<body>
+  <h2>Registration Page</h2>
+ 
+  <form id="formTest" method="get" action="#">
+    <table>
+    <tr>
+      <td><label for="txtName">Account Name<span class="required">*</span></label></td>
+      <td><input type="text" id="txtName" name="name" required autofocus></td>
+    </tr>
+    <tr>
+      <td><label for="dispName">Display Name (optional)</span></label></td>
+      <td><input type="text" id="dispName" name="dispname"></td>
+    </tr>
+    <tr>
+      <td><label for="emailAddress">Email Address<span class="required">*</span></label></td>
+      <td><input type="email" id="emailAddress" name="address" required autofocus pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></td>
+    </tr>
+    <tr>
+      <td><label for="txtPhone">Phone<span class="required">*</span></label></td>
+      <td><input type="tel" id="txtPhone" name="phone" required pattern="\d{3}[\-]\d{3}[\-]\d{4}"></td>
+    </tr>
+    <tr>
+      <td><label for="dateBirthday">Birthday<span class="required">*</span></label></td>
+      <td><input type="date" id="dateBirthday" name="birthday" required></td>
+    </tr>
+    <tr>
+      <td><label for="txtZipcode">Zip Code<span class="required">*</span></label></td>
+      <td><input type="text" id="txtZipcode" name="zipcode"
+            placeholder="enter a 5-digit code"
+            required pattern="^\d{5}$"
+            oninvalid="this.setCustomValidity('Enter a 5-digit zipcode')"
+            oninput="setCustomValidity('')"></td>
+    </tr>
+    <tr>
+      <td><label for="txtPassword">Password<span class="required">*</span></label></td>
+      <td><input type="password" id="txtPassword" name="password"
+          required pattern="^\w{6,8}$"
+          placeholder="6-8 characters"></td>
+    </tr>
+    <tr>
+      <td><label for="txtPWVerified">Verify Password<span class="required">*</span></label></td>
+      <td><input type="password" id="txtPWVerified" name="pwVerified" required></td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="SEND" id="btnSubmit" onclick="return validation(formTest)">&nbsp;
+          <input type="reset" value="CLEAR" id="btnReset"></td>
+    </tr>
+    </table>
+    
+  </form>
+</body>
+<script>
+    function validation(form){
+        //to do, validate age
+        today=new Date();
+        today.setFullYear(today.getFullYear()-18);
+        if(!form){
+            var allFormsAsArray=document.forms;
+            form=document.getElementById("formTest")
+        }
+        console.log(form.zipcode)
+        if(form.birthday>today)
+        {window.alert("Only individuals 18 years of age or older can register!");}
+    }
+</script>
+</html>
