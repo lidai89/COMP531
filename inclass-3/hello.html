@@ -1,0 +1,70 @@
+<h1>In-Class Excercise 1- Hello HTML!</h1>
+
+<body onload="loadwarning()">
+<p>My name is Dai Li.</p>
+<p>This is my first attempt of designing a web application. It is really <b><b>exiting</b>.</p>
+<img src="https://s-media-cache-ak0.pinimg.com/736x/7e/63/98/7e6398f1afd935eaf5637226280e47b0.jpg" width="200px" title="Rice Logo">
+<p>Here is a link <a href="http://www.rice.edu">rice</a> to the webpage of Rice University.</p>
+
+<form id="form1">
+
+  Comments: <textarea name="comments" id="comments" cols="25" rows="3"></textarea>
+  <input type="submit" value="submit" />
+  <input type="reset" value="clear"/>
+  <input type="button" onclick="return clearfunction()"/>
+</form>
+
+<p>
+    <span id="indicator" name="indicator"> </span> seconds until redirection.
+
+</p>
+<input id="pauseButton" type="button" value="Pause" onClick="pause()">
+<input id="resumeButton" type="button" value="Resume" onClick="resume()">
+</body>
+<script>
+function clearfunction(){
+    document.getElementById("comments").value="";
+}
+function loadwarning(){
+    
+    setTimeout(warn_func,6000);
+    
+}
+
+var secs=15;
+
+var t=0;
+  var flagTimer='resume';
+  countdown()
+function countdown() {
+	t = setTimeout('Decrement()',1000);
+}
+function Decrement() {
+	
+        document.getElementById("indicator").innerHTML=secs;
+		secs--;
+        if(secs<0)
+        window.location.replace("https://www.clear.rice.edu/comp431/sample/hello.html");
+		t= setTimeout('Decrement()',1000);
+	
+}
+
+function pause() { 
+  if( flagTimer=='resume')
+  {
+    clearTimeout(t);
+    t=0;
+    flagTimer='pause';
+  }
+  
+}
+function resume() {
+    flagTimer='resume';
+	t= setTimeout('Decrement()',1000);
+}
+
+function warn_func(){
+    window.alert("the page will redirect when the counter reaches zero!");
+    
+}
+</script>
