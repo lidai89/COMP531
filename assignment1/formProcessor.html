@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta author="Dai Li">
+  <title>Registration Page</title>
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    th, td {
+    padding: 5px;
+    text-align: left;    
+    }
+</style>
+</head>
+
+<h1> Form Processor Page</h1>
+<p>Here is your registration information:</p>
+<table id="myTable" style="width:100%">
+  <tr>
+    <th>Parameter</th>
+    <th colspan="2">Value</th> 
+  </tr>
+
+</table>
+
+
+<script type="text/javascript">
+/*    var myVar = "timestamp";
+    document.getElementById("account").innerHTML = getParameterByName(myVar);
+    function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+*/
+    var table = document.getElementById("myTable");
+//function getQueryVariable(variable)
+ //{
+    var query = window.location.href;
+    var vars = query.split('&');
+    vars[0]=vars[0].split('?')[1];
+    for (var i = vars.length-1; i >= 0; i--) {
+        var pair = vars[i].split('=');
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = decodeURIComponent(pair[0]);
+        cell2.innerHTML = decodeURIComponent(pair[1].replace(/\+/g, " "));
+            //console.log(decodeURIComponent(pair[1]))
+            
+        
+    //}
+  }
+    
+
+        </script>
+</html>

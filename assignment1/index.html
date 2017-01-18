@@ -3,13 +3,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta author="Dai Li">
   <title>Registration Page</title>
 </head>
  
 <body>
   <h2>Registration Page</h2>
  
-  <form id="formTest" method="get" action="#">
+  <form id="formTest" method="get" action="formProcessor.html">
     <table>
     <tr>
       <td><label for="txtName">Account Name<span class="required">*</span></label></td>
@@ -52,25 +53,36 @@
 
     <tr>
       <td>&nbsp;</td>
-      <td><input type="submit" value="SEND" id="btnSubmit" onclick="return validation(this.parent.parent)">&nbsp;
+      <td><input type="submit" value="SEND" id="btnSubmit" onclick="return validation(this.parent)">&nbsp;
           <input type="reset" value="CLEAR" id="btnReset"></td>
     </tr>
+    <input type="hidden" name="timestamp" value="">
     </table>
     
   </form>
 </body>
 <script>
+
     function validation(form){
         //to do, validate age
         today=new Date();
         today.setFullYear(today.getFullYear()-18);
+        
+        result=false;
         if(!form){
             var allFormsAsArray=document.forms;
             form=document.getElementById("formTest")
         }
+        form.timestamp.value=new Date();
         console.log(form.zipcode)
-        if(form.birthday>today)
+        if(new Date(form.birthday.value)>today)
         {window.alert("Only individuals 18 years of age or older can register!");}
+        else if (!((form.name.value>='a'&&form.name.value<='z')||(form.name.value>='A'&&form.name.value<='Z')))
+        window.alert("invalid account name!");
+        else if(form.password.value!=form.pwVerified.value)
+        window.alert("please confirm password!");
+        else result=true;
+        return result;
     }
 </script>
 </html>
