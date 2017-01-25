@@ -1,0 +1,15 @@
+#btn {
+   position:absolute;
+   top: 200px;
+   right:650px;
+
+   background-color: yellow;
+}
+ div{   
+    background-color: green;
+    width: 300px;
+    border-style: 25px red;
+    padding: 25px;
+    margin: 25px;
+    border-color:red;
+  }
