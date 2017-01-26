@@ -1,0 +1,93 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width:400px;
+    height:600px;
+    /*height:200px;*/
+    transition: 0.3s;
+    border: 100px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 20px 16px;
+    border: 100px;
+    border-color: gold;
+    border-width: 100,300;
+}
+table {
+    border: 100px lightgray;
+    border-radius: 20px;
+}
+table:hover{
+background-color: lightseagreen;
+}
+table:th, td {
+    padding: 50px;
+    align-items: right;
+}
+div img {
+    width: 400px;
+    max-height: 300px;
+    /*min-height: 200px;
+    min-width: 400px;*/
+    outline: solid 1px red;
+}
+
+.mySlides {
+    width: 400px;
+    max-height: 300px;
+    /*min-height: 200px;
+    min-width: 400px;*/
+    outline: solid 1px red;
+}
+div button{
+    width:120px;
+    height:40px;
+}
+a.button {
+    appearance: button;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    background-color: cornflowerblue;
+    color:papayawhip;
+	display: block;
+	height: 30px;
+	width: 150px;
+    font-size: 20px;
+
+    }
+.userinterface{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  position: relative;
+  width: 250px;
+  height: 100px;
+  z-index: 15;
+  right: 0%;
+  left: 40%;
+  background-color:lightskyblue;
+}
+div.panel-body{
+	max-width: 475px;
+}
+
+div.centerForm{
+	display: block;
+	margin: auto;
+    width: 50%;
+    border: 3px solid red;
+    padding: 10px;
+    min-width: 200px;
+    background-color: lightblue;
+    border-radius:20px;
+}
+
+div.row{
+	margin-bottom: 30px;
+	margin-top: 15px;
+}
