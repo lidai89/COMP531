@@ -1,9 +1,9 @@
-//A constructor to manage the property updation.
+//property class, updated after each valid input
 function Property(name, value){
 	var PropertyName = name;
 	var PropertyValue = value;
 	
-	//Valid the input value for each property field.
+	//Check if input values are valid
 	this.validateNewInputValue = function(newValue){
 		if(newValue === PropertyValue){
 			window.alert('New value is the same as the old value! ('+PropertyName+')');
