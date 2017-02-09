@@ -1,0 +1,22 @@
+div{
+    border-radius: 10px;
+    /*min-height: 200px;
+    min-width: 400px;*/
+    outline: solid 1px indigo;
+}
+h3{
+font: 20px Lucida Console;
+color: cornflowerblue;
+
+}
+
+Body{
+font: 15px arial, sans-serif;
+color: cornflowerblue;
+
+}
+
+.container{
+    border-radius:10px;
+    border-color: gold;
+}

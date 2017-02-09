@@ -12,7 +12,7 @@ var Bullet = function(context,owner,type,dir){
 	this.isDestroyed = false;
 	
 	this.draw = function(){
-		this.ctx.drawImage(Obj_img,80+this.dir*this.size,96,this.size,this.size,this.x,this.y,this.size,this.size);
+		this.ctx.drawImage(Obj_img,80,96,this.size,this.size,this.x,this.y,this.size,this.size);
 		this.move();
 	};
 	

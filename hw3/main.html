@@ -2,15 +2,13 @@
 <html lang="zh" class="no-js demo-1">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta name="author" value="Dai Li">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="battlecity.js"></script>
 		<script src="enemy.js"></script>
 		<script src="bullet.js"></script>
 		<script src="crackAnimation.js"></script>
-		<link rel="stylesheet" type="text/css" href="battle_city.css" />
+		<link rel="stylesheet" type="text/css" href="battlecity.css" />
 		<style type="text/css">
 			#canvasDiv canvas{
 				position:absolute;
@@ -21,13 +19,12 @@
 	</head>
 	<body>
 		<div class="container">
-			<head><h3>Left Click to Move, Space to Stop, Right Click to Attack</h3></head>
+			<head><h3>Battle City</h3></head>
+			<p>Left Click to Move, Space to Attack, Right Click to Stop</p>
 			<div class="main clearfix">
 				<div id="canvasDiv" >
-					<canvas id="wallCanvas" ></canvas> 
 					<canvas id="tankCanvas" ></canvas>
 					<canvas id="enemyCanvas" ></canvas>
-					<canvas id="overCanvas" ></canvas> 
 					<canvas id="stageCanvas" ></canvas>
 				</div>
 			</div>

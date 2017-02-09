@@ -10,7 +10,7 @@ var overCtx;
 var Obj_img = new Image();
 var tankPos=[200,200];
 var tankspeed=3;
-var faceAngle=0;// tank angle
+var faceAngle=Math.PI/2;// tank angle
 var rect;
 var tanksize=32;
 var canvas = $("#stageCanvas");
@@ -31,7 +31,9 @@ var CRACK_TYPE_BULLET = "bullet";
 var POS=new Array();
 POS["tankBomb"] = [0,160];
 POS["bulletBomb"] = [320,0];
+var enemynum=5;
 var score=0;
+var stage=1;
 var player_proto=function(ctx){
     this.ctx =ctx
     this.x=0;
@@ -57,12 +59,12 @@ var player_proto=function(ctx){
 				tempX = this.x + this.size;
 				tempY = this.y + parseInt(this.size/2) - parseInt(this.bullet.size/2);
 			}
-			this.bullet.x = tempX;
-			this.bullet.y = tempY;
+			this.bullet.x = tempX+Math.abs(tanksize*Math.sin(faceAngle)/2);
+			this.bullet.y = tempY+Math.abs(tanksize*Math.cos(faceAngle)/2);
             this.bullet.speed=6;
 			this.bullet.draw();
 			bulletArray.push(this.bullet);
-            console.log(this.bullet.x,this.bullet.y);
+            //console.log(this.bullet.x,this.bullet.y);
 
             
     }};
@@ -77,25 +79,19 @@ $(document).ready(function(){
 });
 document.addEventListener("click",tankspin);
 document.addEventListener('mousedown',tankmove);
-document.addEventListener('keydown',tankstop);
-document.addEventListener('contextmenu',playershoot);
+document.addEventListener('keydown',playershoot);
+document.addEventListener('contextmenu',tankstop);
 function initScreen(){
 	canvas = $("#stageCanvas");
 	ctx = canvas[0].getContext("2d");
 	canvas.attr({"width":SCREEN_WIDTH});
 	canvas.attr({"height":SCREEN_HEIGHT});
-	wallCtx = $("#wallCanvas")[0].getContext("2d");
 	enemyCtx = $("#enemyCanvas")[0].getContext("2d");
-	$("#wallCanvas").attr({"width":SCREEN_WIDTH});
-	$("#wallCanvas").attr({"height":SCREEN_HEIGHT});
 	$("#enemyCanvas").attr({"width":SCREEN_WIDTH});
 	$("#enemyCanvas").attr({"height":SCREEN_HEIGHT});
 	tankCtx = $("#tankCanvas")[0].getContext("2d");
 	$("#tankCanvas").attr({"width":SCREEN_WIDTH});
 	$("#tankCanvas").attr({"height":SCREEN_HEIGHT});
-	overCtx = $("#overCanvas")[0].getContext("2d");
-	$("#overCanvas").attr({"width":SCREEN_WIDTH});
-	$("#overCanvas").attr({"height":SCREEN_HEIGHT});
     $("#canvasDiv").css({top: SCREEN_OFFSETY, left: SCREEN_OFFSETX, position:'absolute'});
 	$("#canvasDiv").css({"width":SCREEN_WIDTH});
 	$("#canvasDiv").css({"height":SCREEN_HEIGHT});
@@ -114,13 +110,37 @@ function initScreen(){
     player.size=32;
     player.x=tankPos[0];
     player.y=tankPos[1];
-    for(i=0;i<10;i++){
+    for(i=0;i<enemynum;i++){
     var obj = null;
     obj = new EnemyOne(enemyCtx);
     obj.x = ENEMY_LOCATION[parseInt(Math.random()*3)] + SCREEN_OFFSETX;
 	obj.y = SCREEN_OFFSETY;	
 	obj.dir = DOWN;
 	enemyArray[enemyArray.length] = obj;}
+	var tkctx=$("#tankCanvas")[0];
+	tkctx.addEventListener('contextmenu', function(e) {
+	console.log('right click!');
+      if (e.button === 2) {
+       e.preventDefault();
+        return false;
+      }
+  }, false)
+  	var enctx=$("#enemyCanvas")[0];
+	tkctx.addEventListener('contextmenu', function(e) {
+	console.log('right click! enemy');
+      if (e.button === 2) {
+       e.preventDefault();
+        return false;
+      }
+  }, false)
+  	var stgctx=$("#stageCanvas")[0];
+	tkctx.addEventListener('contextmenu', function(e) {
+	console.log('right click!stg');
+      if (e.button === 2) {
+       e.preventDefault();
+        return false;
+      }
+  }, false)
     //tankCtx.drawImage(Obj_img,-100,-100);
 }
 
@@ -161,22 +181,43 @@ function tankmove(e){
 }
 
 function tankstop(e){
-    if(e.keyCode==32)
+    //if(e.keyCode==32)
     tank_status='stop';
-    var obj = null;
-    obj = new EnemyOne(enemyCtx);
-    obj.x = ENEMY_LOCATION[parseInt(Math.random()*3)] + SCREEN_OFFSETX;
-	obj.y = SCREEN_OFFSETY;	
-	obj.dir = DOWN;
-	enemyArray[enemyArray.length] = obj;
+	    e.preventDefault();
+        return false;
+    // var obj = null;
+    // obj = new EnemyOne(enemyCtx);
+    // obj.x = ENEMY_LOCATION[parseInt(Math.random()*3)] + SCREEN_OFFSETX;
+	// obj.y = SCREEN_OFFSETY;	
+	// obj.dir = DOWN;
+	// enemyArray[enemyArray.length] = obj;
 }
+//disable right click menu
+$('body').on('contextmenu', '#tankCanvas', function(e){ return false; });
+$('body').on('contextmenu', '#enemyCanvas', function(e){ return false; });
+$('body').on('contextmenu', '#stageCanvas', function(e){ return false; });
+
+// $('#enemyCanvas').addEventListener('contextmenu', function(e) {
+//       if (e.button === 2) {
+//        e.preventDefault();
+//         return false;
+//       }
+//   }, false)
+// $('#stageCanvas').addEventListener('contextmenu', function(e) {
+//       if (e.button === 2) {
+//        e.preventDefault();
+//         return false;
+//       }
+//   }, false)
 function playershoot(e){
     player.shoot(BULLET_TYPE_PLAYER);
 }
 
 function Update(){
-    if(score>=3){alert('You Win!');
+    if(score>=enemynum){alert('You Win!');
     score=0;
+	enemynum=2*enemynum;
+	stage++;
     initScreen();}
     else{
     if(tank_status=='move'){
@@ -235,6 +276,7 @@ function Update(){
 	}
     ctx.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
     ctx.fillStyle="rgba(163, 199, 17,0.5)"
-    ctx.fillText("Score:"+score,400,50);
+    ctx.fillText("Enemy:"+(enemynum-score),400,50);
+	ctx.fillText("Stage:"+stage,400,100);
     }
 }
