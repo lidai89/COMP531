@@ -7,8 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="battlecity.js"></script>
-		<script src="enemy.js"></script>
-		<script src="bullet.js"></script>
 		<link rel="stylesheet" type="text/css" href="battle_city.css" />
 		<style type="text/css">
 			#canvasDiv canvas{
@@ -20,12 +18,12 @@
 	</head>
 	<body>
 		<div class="container">
-			<head><h3>Left Click to Move, Space to Stop</h3></head>
+			<head><h3>操作说明：玩家1：wasd上左下右，space射击；玩家2：方向键，enter射击。n下一关，p上一关。</h3></head>
 			<div class="main clearfix">
 				<div id="canvasDiv" >
 					<canvas id="wallCanvas" ></canvas> 
 					<canvas id="tankCanvas" ></canvas>
-					<canvas id="enemyCanvas" ></canvas>
+					<canvas id="grassCanvas" ></canvas>
 					<canvas id="overCanvas" ></canvas> 
 					<canvas id="stageCanvas" ></canvas>
 				</div>

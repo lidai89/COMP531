@@ -14,6 +14,19 @@ var faceAngle=0;// tank angle
 var rect;
 var tanksize=32;
 var canvas = $("#stageCanvas");
+var enemyCtx;
+var enemyArray=[];
+var bulletArray=[];
+var ENEMY_LOCATION = [192,0,384];// enemy birth place
+var UP = 0;//enemy direction
+var DOWN = 1;
+var LEFT = 2;
+var RIGHT = 3;
+var emenyStopTime = 0;
+var BULLET_TYPE_PLAYER = 1;
+var BULLET_TYPE_ENEMY = 2;
+var CRACK_TYPE_TANK = "tank";
+var CRACK_TYPE_BULLET = "bullet";
 Obj_img.src = "res/tankAll.gif";
 $(document).ready(function(){
 	
@@ -29,11 +42,11 @@ function initScreen(){
 	canvas.attr({"width":SCREEN_WIDTH});
 	canvas.attr({"height":SCREEN_HEIGHT});
 	wallCtx = $("#wallCanvas")[0].getContext("2d");
-	grassCtx = $("#grassCanvas")[0].getContext("2d");
+	enemyCtx = $("#enemyCanvas")[0].getContext("2d");
 	$("#wallCanvas").attr({"width":SCREEN_WIDTH});
 	$("#wallCanvas").attr({"height":SCREEN_HEIGHT});
-	$("#grassCanvas").attr({"width":SCREEN_WIDTH});
-	$("#grassCanvas").attr({"height":SCREEN_HEIGHT});
+	$("#enemyCanvas").attr({"width":SCREEN_WIDTH});
+	$("#enemyCanvas").attr({"height":SCREEN_HEIGHT});
 	tankCtx = $("#tankCanvas")[0].getContext("2d");
 	$("#tankCanvas").attr({"width":SCREEN_WIDTH});
 	$("#tankCanvas").attr({"height":SCREEN_HEIGHT});
@@ -97,7 +110,13 @@ function tankmove(e){
 
 function tankstop(e){
     if(e.keyCode==32)
-    tank_status='stop'
+    tank_status='stop';
+    var obj = null;
+    obj = new EnemyOne(enemyCtx);
+    obj.x = ENEMY_LOCATION[parseInt(Math.random()*3)] + SCREEN_OFFSETX;
+	obj.y = SCREEN_OFFSETY;	
+	obj.dir = DOWN;
+	enemyArray[enemyArray.length] = obj;
 }
 function Update(){
     if(tank_status=='move'){
@@ -115,4 +134,9 @@ function Update(){
 
     }
     tankrotate(faceAngle+0.5*Math.PI);
+    enemyCtx.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+    enemyArray.forEach(function(element){
+        element.draw();
+    })
+
 }
