@@ -26,7 +26,10 @@ var Bullet = function(context,owner,type,dir){
 		}else if(this.dir == LEFT){
 			this.x -= this.speed;
 		}
-		
+		else{
+			this.x += Math.cos(this.dir)*this.speed;
+			this.y += Math.sin(this.dir)*this.speed;
+		}		
 		this.isHit();
 	};
 	
@@ -37,8 +40,8 @@ var Bullet = function(context,owner,type,dir){
 		}
 		
 		if(this.dir == LEFT){
-			if(this.x <= SCREEN_OFFSETX){
-				this.x = SCREEN_OFFSETX;
+			if(this.x <= 0){
+				this.x = 0;
 				this.hit = true;
 			}
 		}else if(this.dir == RIGHT){
@@ -47,8 +50,8 @@ var Bullet = function(context,owner,type,dir){
 				this.hit = true;
 			}
 		}else if(this.dir == UP ){
-			if(this.y <= SCREEN_OFFSETY){
-				this.y = SCREEN_OFFSETY;
+			if(this.y <= 0){
+				this.y = 0;
 				this.hit = true;
 			}
 		}else if(this.dir == DOWN){
@@ -81,7 +84,7 @@ var Bullet = function(context,owner,type,dir){
 							if(enemyObj.lives > 1){
 								enemyObj.lives --;
 							}else{
-								enemyObj.distroy();
+								enemyObj.destroy();
 							}
 							this.hit = true;
 							break;
@@ -89,15 +92,8 @@ var Bullet = function(context,owner,type,dir){
 					}
 				}
 			}else if(this.type == BULLET_TYPE_ENEMY){
-				if(player1.lives > 0 && CheckIntersect(this,player1,0)){
-					if( !player1.isDestroyed){
-						player1.distroy();
-					}
-					this.hit = true;
-				}else if(player2.lives > 0 && CheckIntersect(this,player2,0)){
-					if( !player2.isDestroyed){
-						player2.distroy();
-					}
+				if(player.lives > 0 && CheckIntersect(this,player,0)){
+
 					this.hit = true;
 				}
 			}
@@ -105,17 +101,15 @@ var Bullet = function(context,owner,type,dir){
 		
 		
 		if(this.hit){
-			this.distroy();
+			this.destroy();
 		}
 	};
 	
 
-	this.distroy = function(){
+	this.destroy = function(){
 		this.isDestroyed = true;
 		crackArray.push(new CrackAnimation(CRACK_TYPE_BULLET,this.ctx,this));
-		if(!this.owner.isAI){
-			BULLET_DESTROY_AUDIO.play();
-		}
+
 	};
 	
 	

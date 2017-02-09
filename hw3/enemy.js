@@ -120,10 +120,9 @@ var Tank = function(){
 	};
 	
 
-	this.distroy = function(){
+	this.destroy = function(){
 		this.isDestroyed = true;
 		crackArray.push(new CrackAnimation(CRACK_TYPE_TANK,this.ctx,this));
-		TANK_DESTROY_AUDIO.play();
 	};
 	
 	
