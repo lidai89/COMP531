@@ -93,7 +93,8 @@ var Bullet = function(context,owner,type,dir){
 				}
 			}else if(this.type == BULLET_TYPE_ENEMY){
 				if(player.lives > 0 && CheckIntersect(this,player,0)){
-
+					//console.log('hit!')
+					player.lives--;
 					this.hit = true;
 				}
 			}

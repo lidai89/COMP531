@@ -39,7 +39,7 @@ var player_proto=function(ctx){
     this.x=0;
     this.y=0;
     this.z=0;
-    this.lives=1;
+    this.lives=2;
     this.dir=0;
     this.shoot = function(type){
 
@@ -68,7 +68,7 @@ var player_proto=function(ctx){
 
             
     }};
-var player;
+var player=new player_proto();
 Obj_img.src = "res/tankAll.gif";
 $(document).ready(function(){
 	
@@ -110,16 +110,17 @@ function initScreen(){
     player.size=32;
     player.x=tankPos[0];
     player.y=tankPos[1];
+	player.lives=2;
     for(i=0;i<enemynum;i++){
     var obj = null;
     obj = new EnemyOne(enemyCtx);
     obj.x = ENEMY_LOCATION[parseInt(Math.random()*3)] + SCREEN_OFFSETX;
-	obj.y = SCREEN_OFFSETY;	
+	obj.y = parseInt(Math.random()*700);	
 	obj.dir = DOWN;
 	enemyArray[enemyArray.length] = obj;}
 	var tkctx=$("#tankCanvas")[0];
 	tkctx.addEventListener('contextmenu', function(e) {
-	console.log('right click!');
+	//console.log('right click!');
       if (e.button === 2) {
        e.preventDefault();
         return false;
@@ -219,6 +220,13 @@ function Update(){
 	enemynum=2*enemynum;
 	stage++;
     initScreen();}
+	else if(player.lives==0){
+		alert('You Lose!');
+		score=0;
+		enemyCtx.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+		enemyArray=[];
+		initScreen();
+	}
     else{
     if(tank_status=='move'){
     tankPos[0]+=tankspeed*Math.cos(faceAngle);
@@ -278,5 +286,6 @@ function Update(){
     ctx.fillStyle="rgba(163, 199, 17,0.5)"
     ctx.fillText("Enemy:"+(enemynum-score),400,50);
 	ctx.fillText("Stage:"+stage,400,100);
+	ctx.fillText("Life:"+player.lives,400,150);
     }
 }
