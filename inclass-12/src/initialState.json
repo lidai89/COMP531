@@ -1,0 +1,7 @@
+{
+	"todoItems": [
+	    {"id": 0, "text": "This is an item", "done": false},
+	    {"id": 1, "text": "Another item", "done": false},
+	    {"id": 2, "text": "A third item?", "done": true}
+	]
+}

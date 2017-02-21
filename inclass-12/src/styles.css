@@ -1,0 +1,69 @@
+
+body {
+	margin: 25px;
+}
+
+span.submit {
+	float: right;
+	border-radius: 10px;
+	border: 2px solid green;
+	padding: 4px;
+}
+
+ul.todo {
+	margin-top: 10px;
+	border: 1px solid black;
+}
+
+li {
+	list-style: none;
+	position: relative;
+	font-size: 24px;
+	border-bottom: 1px solid #ededed;
+}
+
+li span {
+	white-space: pre-line;
+	word-break: break-all;
+	padding: 15px 60px 15px 15px;
+	margin-left: 45px;
+	display: block;
+	line-height: 1.2;
+	transition: color 0.4s;
+}
+
+li .completed {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
+
+li .destroy {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+
+li .check {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #0aae1f;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+
