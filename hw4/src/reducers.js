@@ -27,11 +27,13 @@ const Reducer = (state = {
             return { ...state, headline: action.text}
         case Actions.UPDATE_PROFILE:
             return {...state,
-                profile:action.newprofile}
+                profile:action.newprofile,message:action.message}
         case Actions.ERROR:
             return { ...state, message: action.message }
         case Actions.LOGIN:
-            return {...state,location:'Main',account:action.account}
+            return {...state,location:'Main',account:action.account,message:''}
+        case Actions.ERROR:
+            return {...state,message:action.message}
         case Actions.ADD_ARTICLE:
         return {...state,
             nextid:state.nextid+1,
@@ -48,7 +50,7 @@ const Reducer = (state = {
         }
          case Actions.LOGOUT:
          return {
-                ...state,location:'Landing Page'
+                ...state,location:'Landing Page',message:''
          }   
 
          case Actions.NAV2PROF:
@@ -57,7 +59,7 @@ const Reducer = (state = {
          }
          case Actions.NAV2MAIN:
          return{
-             ...state,location:'Main'
+             ...state,location:'Main',message:''
          }
             
             

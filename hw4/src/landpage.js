@@ -22,6 +22,8 @@ export const Landpage = ({ text, message,update,login }) => {
         <h1>{text}</h1>
         <p>This is a draft frontend of RiceBook App</p>
         </ReactBootstrap.Jumbotron>
+        {message===''?'':
+        <div className="row formRow alert alert-danger text-center"> {message} </div>}
         <div className="row">
         <Register/>
         <LogIn/>
@@ -35,7 +37,7 @@ Landpage.propTypes = {
 }
 
 export default connect(
-    null,
+    (state)=>({text:state.text,message:state.message}),
     (dispatch) => {
         return{ update: (text) => dispatch(updateText(text)),
                 login:  ()     => dispatch(userlogin()) }}

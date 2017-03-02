@@ -10,8 +10,10 @@ export const REGISTER='REGISTER'
 export const UNFOLLOW='UNFOLLOW'
 
 
-export const userlogin = (name) => {
-return{type:LOGIN,account:name}
+export const userlogin = (name,password) => {
+if(name=='guest'&&password=='visitor')
+return{type:LOGIN,account:name,pw:password}
+else return{type:ERROR,message:'Invalid Account or Password! Hint:guest, visitor'}
 }
 
 export const userlogout = () => {
@@ -55,6 +57,7 @@ export const updateHeadline=(hl)=>{
 export const updateprofile=(input)=>{
     return{
         type:UPDATE_PROFILE,
+        message:'Update Succeess!',
         newprofile:{
         username:input.username,
         email:input.email,

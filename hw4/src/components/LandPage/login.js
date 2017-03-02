@@ -11,7 +11,7 @@ const LogIn = ({logIn}) => {
 		</div>
 		<form  onSubmit= {(e) => {
 			e.preventDefault();
-			logIn(accountName.value);
+			logIn(accountName.value,password.value);
 		}}>
 		<div className="form-group row">
 			<label htmlFor="example-text-input" className="col-xs-4 col-form-label">User Name</label>
@@ -40,7 +40,7 @@ const LogIn = ({logIn}) => {
 	export default connect(null,
     (dispatch) => {
         return {
-            logIn:  (name)     => dispatch(userlogin(name))  
+            logIn:  (name,pw)     => dispatch(userlogin(name,pw))  
         }
     }
     )(LogIn)

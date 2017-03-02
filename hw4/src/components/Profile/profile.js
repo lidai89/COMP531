@@ -4,11 +4,14 @@ import {updateprofile} from '../../actions'
 import Navigation2Main from './navagation2main'
 //Profile with update function
 
-export const Profile =  ({username,email,zipcode,dob,avatar,updateprof})=> {
+export const Profile =  ({username,email,zipcode,dob,avatar,message,updateprof})=> {
     let newusername,newzipcode,newemail;
     { return (
         <div>
         <Navigation2Main/>
+		{message===''?'':
+			<div className="row formRow alert alert-success"> {message} </div>
+		}
         <div className="jumbotron text-center">
         <form className="centerForm" onSubmit={(e) => {
            updateprof({
@@ -31,12 +34,12 @@ export const Profile =  ({username,email,zipcode,dob,avatar,updateprof})=> {
 			</div>
 			<div className="row property" id="emailAddress">
 				<div className="col-md-4">Email Address:</div>
-				<div className="col-md-4"><input type="text" size="20"ref={(node) => {newemail=node}}/></div>
+				<div className="col-md-4"><input type="text" type="email" placeholder="eg. a@b.co" size="20" ref={(node) => {newemail=node}}/></div>
 				<div className="col-md-4">{email}</div>
 			</div>
 			<div className="row property" id="zipcode">
 				<div className="col-md-4">Zipcode:</div>
-				<div className="col-md-4"><input type="text" size="20"ref={(node) => {newzipcode=node}}/></div>
+				<div className="col-md-4"><input type="text" size="20" pattern="^\d{5}(?:[-\s]\d{4})?$" ref={(node) => {newzipcode=node}}/></div>
 				<div className="col-md-4">{zipcode}</div>
 			</div>
 			<div className="row property" id="password">
@@ -71,7 +74,8 @@ export default connect((state) => {
 		avatar: state.profile.avatar,
 		zipcode: state.profile.zipcode,
 		email: state.profile.email,
-		dob: state.profile.dob
+		dob: state.profile.dob,
+		message:state.message
 	}},
     (dispatch) => ({
 	updateprof: (input) => {dispatch(updateprofile(input))}})
