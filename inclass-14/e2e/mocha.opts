@@ -1,0 +1,5 @@
+--compilers js:babel-core/register
+--recursive
+--colors
+--timeout 30000
+--bail
