@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+.centerForm{
+	display: block;
+	margin: auto;
+    width: 80%;
+    border: 3px solid green;
+    padding: 10px;
+    min-width: 200px;
+}
+
+div.formRow{
+	margin-bottom: 30px;
+	margin-top: 15px;
+}
+div.panel{
+	margin-top: 20px;
+}
+div.row{
+	margin-bottom: 30px;
+	margin-top: 15px;
+}
