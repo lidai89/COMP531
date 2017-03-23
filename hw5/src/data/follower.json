@@ -1,0 +1,13 @@
+{
+	"followerlist": [
+        {"id": 0,"name": "Scott Pollack", "img":"https://upload.wikimedia.org/wikipedia/en/d/d4/Mickey_Mouse.png","headline":"Awesome trip to USA"},
+        {"id": 1,"name": "Steve Brown", "img":"https://openclipart.org/download/17810/lemmling-Cartoon-elephant.svg","headline":"javascript is good"},
+        {"id": 2,"name": "Wayne Rooney",
+         "img":"http://image.shutterstock.com/display_pic_with_logo/1058333/122233522/stock-vector-illustration-of-cartoon-squirrel-hoard-nuts-122233522.jpg"
+         ,"headline":"One more goal"},
+        {"id": 3,"name": "Harry Kane", "img":"https://s-media-cache-ak0.pinimg.com/736x/4b/53/55/4b53554766a2ed8fe948c08b09f37b1b.jpg","headline":"Spurs forever"},
+        {"id": 4,"name": "Joe Hart", "img":"http://img.freepik.com/free-vector/funny-young-boy-and-girl-students-vector-cartoon-isolated-characters_1196-505.jpg?size=338c&ext=jpg"
+        ,"headline":"Torino sucks"}
+	]
+
+}
