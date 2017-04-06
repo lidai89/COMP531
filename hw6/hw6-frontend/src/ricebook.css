@@ -1,0 +1,37 @@
+h1 {
+    text-align: center;
+}
+.centerForm{
+	display: block;
+	margin: auto;
+    width: 80%;
+    border: 3px solid maroon;
+    padding: 10px;
+    min-width: 200px;
+}
+
+div.formRow{
+	margin-bottom: 30px;
+	margin-top: 15px;
+}
+div.panel{
+	margin-top: 20px;
+	margin-right:20px;
+	border: 3px solid maroon;
+}
+div.row{
+	margin-bottom: 30px;
+	margin-top: 15px;
+	/*margin-right:200px;*/
+}
+#welcome{
+	background:-webkit-linear-gradient(maroon, purple);
+}
+#welcomerow{
+	background:-webkit-linear-gradient(navajowhite, mediumpurple);
+	padding: 20px;
+}
+#navbar{
+	background:-webkit-linear-gradient(brown, lightcoral);
+	color: limegreen;
+}
