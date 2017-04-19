@@ -1,0 +1,21 @@
+1 What did you hope to learn but did not?
+
+  I had hoped to learn some enterprise level back-end applications using JAVA and PHP. But this course focuses on relatively light load websites.
+
+2 What did you really enjoy learning about?
+
+  I really enjoy learning Javascript and becoming a full-stack software engineer.
+
+3 What worked well in the course? and how?
+
+  I personally like the broad area of knowledges involved in this course. It tells us what is needed to construct a working website.
+
+4 What did not work well in the course and how might it be improved?
+
+  The workload is really high. For every single inclass exersice, everything is new and we have to start from beginning to work on it.
+  I suppose some exercises can be combined into one to reduce load and give a better understanding of the scheme.
+
+5 What could I have done to help you more?
+
+  The instructor has been very nice and helpful in the course. And I think the course can provide some sample codes and frameworks to help student develop more efficiently.
+  Building wheels on our own is fun but painful.
