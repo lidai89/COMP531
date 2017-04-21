@@ -1,0 +1,5 @@
+{
+	"netid": "dl37",
+	"frontend": "http://lidai_ricebook_hw6_frontend.surge.sh",
+	"backend":"https://morning-castle-52219.herokuapp.com/"
+}
